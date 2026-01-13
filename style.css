@@ -360,14 +360,6 @@ body {
   color: #666;
 }
 
-@media (max-width: 1400px) {
-  .testimonials-container {
-    grid-template-columns: 1fr;
-  }
-  .footer-content {
-    grid-template-columns: 1fr 1fr;
-  }
-}
 
 @media (max-width: 992px) {
   .hero h1 {
@@ -381,5 +373,86 @@ body {
   }
   .footer-content {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Modal Styles */
+
+/* The Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  animation: fadeIn 0.3s;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fff;
+  color: #333;
+  margin: 10% auto;
+  padding: 30px;
+  border: none;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+  animation: slideIn 0.4s;
+  text-align: center;
+}
+
+/* The Close Button */
+.modal-close-btn {
+  color: #aaa;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  color: #000;
+}
+
+/* Modal Item Styling */
+.modal-item h2 {
+  color: #000;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.modal-item p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Animatino of button */
+@keyframes fadeIn {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+@keyframes slideIn {
+  from {transform: translateY(-50px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
+}
+
+@media (max-width: 1400px) {
+  .testimonials-container {
+    grid-template-columns: 1fr;
+  }
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
   }
 }
