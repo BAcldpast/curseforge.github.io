@@ -1,34 +1,465 @@
-document.addEventListener('DOMContentLoaded', function() {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
-  const modal = document.getElementById('modal');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  const bookBtn = document.getElementById('book-consult-btn');
-  const learnBtn = document.getElementById('learn-more-btn');
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+}
 
-  const bookContent = document.getElementById('book-content');
-  const learnContent = document.getElementById('learn-content');
+/* Navbar */
+.navbar {
+  background-color: #000;
+  color: #fff;
+  padding: 1rem 5%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-  const closeBtn = document.getElementsByClassName('modal-close-btn')[0];
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1600px;
+  margin: 0 auto;
+}
 
-  bookBtn.onclick = function() {
-    modal.style.display = 'block';
-    bookContent.style.display = 'block';
-    learnContent.style.display = 'none';
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo img {
+  height: 120px;
+  margin-bottom: 4px;
+}
+
+.logo span {
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Dropdown Button */
+.nav-links .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #000;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1001;
+  top: 100%;
+  left: 0;
+}
+
+.dropdown-content a {
+  color: #fff;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.dropdown-content a:hover {
+  background-color: #cc0000;
+}
+
+.nav-links .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.nav-links .dropdown:hover .dropbtn {
+  color: #cc0000;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 80vh;
+  background-image: url('images/hero_overlay.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-red {
+  background-color: #cc0000;
+  color: #fff;
+}
+
+.btn-outline {
+  border: 2px solid #ff6600;
+  color: #fff;
+}
+
+/* Explore Section */
+.explore {
+  padding: 5rem 5%;
+  max-width: 1600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.explore h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  text-align: left;
+}
+
+.service-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+}
+
+.service-card h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* Testimonials Section */
+.testimonials {
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/testimonials.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 5rem 5%;
+  color: #fff;
+}
+
+.testimonials-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.testimonials-left h2 {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+
+.google-rating {
+  margin: 2rem 0;
+}
+
+.google-logo {
+  height: 30px;
+  margin-top: 10px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.review-card {
+  background: #fff;
+  color: #333;
+  padding: 1.5rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+}
+
+.stars {
+  color: #fbbc05;
+  margin: 10px 0;
+}
+
+.reviewer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  background-image: url('images/client.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+
+/* Footer */
+.footer {
+  background-color: #000;
+  color: #fff;
+  padding: 5rem 5% 2rem;
+}
+
+.footer-content {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 5rem;
+}
+
+.footer-brand .logo {
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 1.5rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icons a {
+  width: 30px;
+  height: 30px;
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer h4 {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.footer ul {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.footer ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer ul a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer-contact p {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.footer-bottom {
+  border-top: 1px solid #222;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+
+@media (max-width: 992px) {
+  .hero h1 {
+    font-size: 2.5rem;
   }
-
-  learnBtn.onclick = function() {
-    modal.style.display = 'block';
-    learnContent.style.display = 'block';
-    bookContent.style.display = 'none';
+  .nav-links {
+    display: none;
   }
-
-  closeBtn.onclick = function() {
-    modal.style.display = 'none';
+  .testimonials-grid {
+    grid-template-columns: 1fr;
   }
-
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = 'none';
-    }
+  .footer-content {
+    grid-template-columns: 1fr;
   }
-});
+}
+
+/* Modal Styles */
+
+/* The Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  animation: fadeIn 0.3s;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fff;
+  color: #333;
+  margin: 10% auto;
+  padding: 30px;
+  border: none;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+  animation: slideIn 0.4s;
+  text-align: center;
+}
+
+/* The Close Button */
+.modal-close-btn {
+  color: #aaa;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  color: #000;
+}
+
+/* Modal Item Styling */
+.modal-item h2 {
+  color: #000;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.modal-item p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Make the "Explore Our Services" button solid */
+.modal-item .btn-outline {
+  background-color: #ff6600;
+  color: #fff;
+  border: 2px solid #ff6600;
+}
+
+/* Animatino of button */
+@keyframes fadeIn {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+@keyframes slideIn {
+  from {transform: translateY(-50px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
+}
+
+@media (max-width: 1400px) {
+  .testimonials-container {
+    grid-template-columns: 1fr;
+  }
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
