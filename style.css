@@ -437,6 +437,13 @@ body {
   margin-bottom: 1.5rem;
 }
 
+/* Make the "Explore Our Services" button solid */
+.modal-item .btn-outline {
+  background-color: #ff6600;
+  color: #fff;
+  border: 2px solid #ff6600;
+}
+
 /* Animatino of button */
 @keyframes fadeIn {
   from {opacity: 0}
